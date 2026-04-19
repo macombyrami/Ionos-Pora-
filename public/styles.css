@@ -5,13 +5,110 @@ html {
 body {
   background:
     radial-gradient(circle at top right, rgba(88, 179, 255, 0.08), transparent 24%),
-    linear-gradient(180deg, #050b14 0%, #070f19 100%);
+    linear-gradient(180deg, #050b14 0%, #07111b 100%);
 }
 
-.desk-shell {
+.hero-shell {
+  position: relative;
   background:
-    radial-gradient(circle at 92% 10%, rgba(88, 179, 255, 0.12), transparent 18%),
+    radial-gradient(circle at 88% 12%, rgba(88, 179, 255, 0.14), transparent 20%),
+    radial-gradient(circle at 14% 18%, rgba(245, 158, 11, 0.08), transparent 24%),
     linear-gradient(180deg, #07111c 0%, #09131f 100%);
+}
+
+.ambient {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.ambient-a {
+  top: 6%;
+  right: 8%;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(88, 179, 255, 0.16);
+  animation: float 11s ease-in-out infinite;
+}
+
+.ambient-b {
+  left: -4rem;
+  top: 16rem;
+  width: 12rem;
+  height: 12rem;
+  background: rgba(245, 158, 11, 0.12);
+  animation: float 14s ease-in-out infinite reverse;
+}
+
+.ambient-c {
+  right: 32%;
+  bottom: 5%;
+  width: 10rem;
+  height: 10rem;
+  background: rgba(38, 166, 154, 0.12);
+  animation: float 12s ease-in-out infinite;
+}
+
+.hero-board,
+.metric-card,
+.glass-card,
+.proof-card,
+.workflow-card,
+.testimonial-card,
+.faq-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-board::before,
+.metric-card::before,
+.glass-card::before,
+.proof-card::before,
+.workflow-card::before,
+.testimonial-card::before,
+.faq-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(120deg, rgba(88, 179, 255, 0.1), transparent 30%, transparent 70%, rgba(245, 158, 11, 0.06));
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+  pointer-events: none;
+}
+
+.metric-card:hover::before,
+.glass-card:hover::before,
+.proof-card:hover::before,
+.workflow-card:hover::before,
+.testimonial-card:hover::before,
+.faq-card:hover::before {
+  opacity: 1;
+}
+
+.metric-card,
+.glass-card,
+.proof-card,
+.workflow-card,
+.testimonial-card,
+.faq-card {
+  transition:
+    transform 250ms ease-out,
+    border-color 250ms ease-out,
+    background-color 250ms ease-out,
+    box-shadow 250ms ease-out;
+}
+
+.metric-card:hover,
+.glass-card:hover,
+.proof-card:hover,
+.workflow-card:hover,
+.testimonial-card:hover,
+.faq-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(88, 179, 255, 0.18);
+  box-shadow: 0 22px 50px rgba(5, 15, 28, 0.28);
 }
 
 .terminal-card {
@@ -30,6 +127,32 @@ body {
   pointer-events: none;
 }
 
+.terminal-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(88, 179, 255, 0.08), transparent 24%, transparent 72%, rgba(245, 158, 11, 0.06));
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.pulse-tag {
+  animation: pulseGlow 2.2s ease-in-out infinite;
+}
+
+.terminal-row {
+  transition:
+    transform 220ms ease-out,
+    border-color 220ms ease-out,
+    background-color 220ms ease-out;
+}
+
+.terminal-row:hover {
+  transform: translateX(6px);
+  border-color: rgba(88, 179, 255, 0.22);
+  background: rgba(255, 255, 255, 0.035);
+}
+
 .chart-grid {
   position: relative;
   overflow: hidden;
@@ -43,6 +166,25 @@ body {
     linear-gradient(rgba(168, 194, 222, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(168, 194, 222, 0.06) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+.chart-glow {
+  position: absolute;
+  inset: auto 8% 12% 8%;
+  height: 34%;
+  background: radial-gradient(circle at center, rgba(88, 179, 255, 0.18), transparent 70%);
+  filter: blur(24px);
+  animation: pulseFloat 4s ease-in-out infinite;
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(88, 179, 255, 0.95), transparent);
+  box-shadow: 0 0 22px rgba(88, 179, 255, 0.45);
+  animation: scan 4.5s linear infinite;
 }
 
 .candles {
@@ -62,6 +204,15 @@ body {
   justify-self: center;
   max-width: 12px;
   border-radius: 999px 999px 2px 2px;
+  animation: candleRise 1.1s ease-out both;
+}
+
+.candle:nth-child(2n) {
+  animation-delay: 120ms;
+}
+
+.candle:nth-child(3n) {
+  animation-delay: 240ms;
 }
 
 .candle::before {
@@ -86,17 +237,122 @@ body {
   color: #ef5350;
 }
 
+.ticker-shell {
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 24s linear infinite;
+}
+
+.ticker-group {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.ticker-group span::before {
+  content: "/";
+  margin-right: 0.9rem;
+  color: rgba(88, 179, 255, 0.65);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition:
-    opacity 0.6s ease-out,
-    transform 0.6s ease-out;
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+.reveal-soft {
+  animation: drift 7s ease-in-out infinite;
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.is-visible .metric-card,
+.is-visible.metric-card {
+  animation: drift 7s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(38, 166, 154, 0);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(38, 166, 154, 0.28);
+  }
+}
+
+@keyframes pulseFloat {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: 12%;
+  }
+  100% {
+    top: 88%;
+  }
+}
+
+@keyframes candleRise {
+  from {
+    transform: scaleY(0.2);
+    transform-origin: bottom;
+    opacity: 0.3;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    opacity: 1;
+  }
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -108,5 +364,27 @@ body {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .ambient,
+  .pulse-tag,
+  .chart-glow,
+  .scan-line,
+  .ticker-track,
+  .candle,
+  .reveal-soft,
+  .is-visible .metric-card,
+  .is-visible.metric-card {
+    animation: none !important;
+  }
+
+  .metric-card:hover,
+  .glass-card:hover,
+  .proof-card:hover,
+  .workflow-card:hover,
+  .testimonial-card:hover,
+  .faq-card:hover,
+  .terminal-row:hover {
+    transform: none;
   }
 }
