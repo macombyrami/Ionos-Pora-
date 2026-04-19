@@ -1,0 +1,17 @@
+{
+  "name": "ionos-pora",
+  "version": "1.0.0",
+  "description": "Landing page Node.js pour Ionos Pora",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "node",
+    "landing-page",
+    "trading",
+    "prop-firm"
+  ],
+  "license": "MIT"
+}

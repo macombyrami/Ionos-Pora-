@@ -8,6 +8,7 @@
       name="description"
       content="Ionos Pora aide les traders à valider leurs challenges prop firm, analyser les graphiques et respecter une gestion du risque rigoureuse."
     />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,73 +33,20 @@
               glow: "#7CC5FF",
               ember: "#FF7A1A",
               sand: "#FFD8B8",
-              paper: "#F5F9FF",
+              paper: "#F5F9FF"
             },
             boxShadow: {
               soft: "0 20px 60px rgba(4, 15, 30, 0.16)",
-              panel: "0 10px 30px rgba(10, 34, 56, 0.22)",
+              panel: "0 10px 30px rgba(10, 34, 56, 0.22)"
             },
             backgroundImage: {
-              grid: "linear-gradient(rgba(122, 164, 212, 0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(122, 164, 212, 0.10) 1px, transparent 1px)",
-            },
-          },
-        },
+              grid: "linear-gradient(rgba(122, 164, 212, 0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(122, 164, 212, 0.10) 1px, transparent 1px)"
+            }
+          }
+        }
       };
     </script>
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        background:
-          radial-gradient(circle at top left, rgba(90, 178, 255, 0.24), transparent 24%),
-          radial-gradient(circle at 85% 12%, rgba(255, 122, 26, 0.16), transparent 22%),
-          linear-gradient(180deg, #f5f9ff 0%, #ebf4ff 48%, #f8fbff 100%);
-      }
-
-      .noise::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        opacity: 0.05;
-        background-image:
-          radial-gradient(circle at 20% 20%, #07111f 0.7px, transparent 0.8px),
-          radial-gradient(circle at 80% 30%, #07111f 0.7px, transparent 0.8px),
-          radial-gradient(circle at 40% 80%, #07111f 0.7px, transparent 0.8px);
-        background-size: 28px 28px;
-      }
-
-      .hero-line {
-        background: linear-gradient(90deg, rgba(90, 178, 255, 0.55), rgba(255, 122, 26, 0.35));
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition:
-          opacity 0.6s ease-out,
-          transform 0.6s ease-out;
-      }
-
-      .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-
-        .reveal {
-          opacity: 1;
-          transform: none;
-          transition: none;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body class="text-steel antialiased selection:bg-sky selection:text-ink">
     <div class="relative overflow-hidden noise">
@@ -424,21 +372,21 @@
             </div>
             <div class="mt-12 space-y-4">
               <details class="reveal rounded-[1.75rem] border border-line/10 bg-white p-6 shadow-soft">
-                <summary class="cursor-pointer list-none text-lg font-semibold text-ink">Le bot prend-il les trades à ma place&nbsp;?</summary>
+                <summary class="cursor-pointer list-none text-lg font-semibold text-ink">Le bot prend-il les trades à ma place ?</summary>
                 <p class="mt-4 leading-7 text-steel/76">
                   Non. Ionos Pora agit comme assistant de trading. Il structure l’analyse, soutient la lecture du
                   contexte et renforce le respect du risque, mais la décision finale appartient au trader.
                 </p>
               </details>
               <details class="reveal rounded-[1.75rem] border border-line/10 bg-white p-6 shadow-soft">
-                <summary class="cursor-pointer list-none text-lg font-semibold text-ink">À qui s’adresse Ionos Pora&nbsp;?</summary>
+                <summary class="cursor-pointer list-none text-lg font-semibold text-ink">À qui s’adresse Ionos Pora ?</summary>
                 <p class="mt-4 leading-7 text-steel/76">
                   Aux traders débutants qui veulent un cadre propre, comme aux profils plus expérimentés qui cherchent à
                   conserver une exécution stable sur les marchés et pendant les challenges prop firm.
                 </p>
               </details>
               <details class="reveal rounded-[1.75rem] border border-line/10 bg-white p-6 shadow-soft">
-                <summary class="cursor-pointer list-none text-lg font-semibold text-ink">Quel est le bénéfice principal&nbsp;?</summary>
+                <summary class="cursor-pointer list-none text-lg font-semibold text-ink">Quel est le bénéfice principal ?</summary>
                 <p class="mt-4 leading-7 text-steel/76">
                   Réduire les décisions improvisées. Le produit vise avant tout la discipline, la cohérence et une
                   meilleure lecture des opportunités avant exécution.
@@ -493,21 +441,6 @@
       </footer>
     </div>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-            }
-          });
-        },
-        { threshold: 0.18 }
-      );
-
-      document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
-    </script>
+    <script src="/app.js"></script>
   </body>
 </html>
