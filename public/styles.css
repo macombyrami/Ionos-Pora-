@@ -8,21 +8,6 @@ body {
     linear-gradient(180deg, #050b14 0%, #07111b 100%);
 }
 
-.cursor-aura {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 22rem;
-  height: 22rem;
-  border-radius: 999px;
-  pointer-events: none;
-  z-index: 5;
-  background: radial-gradient(circle, rgba(88, 179, 255, 0.08), transparent 68%);
-  transform: translate3d(-50%, -50%, 0);
-  opacity: 0;
-  transition: opacity 200ms ease-out;
-}
-
 .hero-shell {
   position: relative;
   background:
@@ -98,7 +83,6 @@ body {
 .workflow-card,
 .testimonial-card,
 .faq-card,
-.cta-zone,
 .counter-card {
   position: relative;
   overflow: hidden;
@@ -111,7 +95,6 @@ body {
 .workflow-card::before,
 .testimonial-card::before,
 .faq-card::before,
-.cta-zone::before,
 .counter-card::before {
   content: "";
   position: absolute;
@@ -129,10 +112,6 @@ body {
 .testimonial-card:hover::before,
 .faq-card:hover::before,
 .counter-card:hover::before,
-.cta-zone:hover::before {
-  opacity: 1;
-}
-
 .metric-card,
 .glass-card,
 .proof-card,
@@ -157,23 +136,6 @@ body {
   transform: translateY(-6px);
   border-color: rgba(88, 179, 255, 0.18);
   box-shadow: 0 22px 50px rgba(5, 15, 28, 0.28);
-}
-
-.magnetic {
-  will-change: transform;
-}
-
-.cta-primary {
-  position: relative;
-}
-
-.cta-primary::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.32), transparent 80%);
-  transform: translateX(-120%);
-  animation: ctaSweep 2.8s linear infinite;
 }
 
 .live-strip {
@@ -318,41 +280,6 @@ body {
   color: #ef5350;
 }
 
-.ticker-shell,
-.testimonial-marquee {
-  overflow: hidden;
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker 22s linear infinite;
-}
-
-.ticker-group {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-.ticker-group span::before {
-  content: "/";
-  margin-right: 0.9rem;
-  color: rgba(88, 179, 255, 0.65);
-}
-
-.testimonial-track {
-  display: flex;
-  gap: 1rem;
-  width: max-content;
-  animation: marquee 26s linear infinite;
-}
-
-.testimonial-card {
-  width: min(22rem, calc(100vw - 2rem));
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -461,33 +388,6 @@ body {
   }
 }
 
-@keyframes ticker {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-50% - 0.5rem));
-  }
-}
-
-@keyframes ctaSweep {
-  0% {
-    transform: translateX(-120%);
-  }
-  100% {
-    transform: translateX(120%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -503,13 +403,10 @@ body {
   .pulse-tag,
   .chart-glow,
   .scan-line,
-  .ticker-track,
-  .testimonial-track,
   .candle,
   .reveal-soft,
   .is-visible .metric-card,
   .is-visible.metric-card,
-  .cta-primary::after,
   .live-strip,
   .status-dot {
     animation: none !important;
@@ -525,11 +422,6 @@ body {
   .counter-card:hover {
     transform: none;
   }
-
-  .cursor-aura {
-    display: none;
-  }
-
   .line-waves-canvas {
     display: none;
   }

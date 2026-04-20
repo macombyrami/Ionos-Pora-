@@ -58,23 +58,8 @@ document.querySelectorAll(".countup").forEach((element) => counterObserver.obser
 
 if (!prefersReducedMotion) {
   const hero = document.querySelector(".hero-shell");
-  const aura = document.querySelector(".cursor-aura");
   const wavesCanvas = document.querySelector(".line-waves-canvas");
-  const floatingCards = document.querySelectorAll(".metric-card, .proof-card, .counter-card");
-  const magneticElements = document.querySelectorAll(".magnetic");
-
-  document.addEventListener("pointermove", (event) => {
-    if (aura) {
-      aura.style.opacity = "1";
-      aura.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
-    }
-  });
-
-  document.addEventListener("pointerleave", () => {
-    if (aura) {
-      aura.style.opacity = "0";
-    }
-  });
+  const floatingCards = document.querySelectorAll(".metric-card");
 
   hero?.addEventListener("pointermove", (event) => {
     const rect = hero.getBoundingClientRect();
@@ -92,19 +77,6 @@ if (!prefersReducedMotion) {
   hero?.addEventListener("pointerleave", () => {
     floatingCards.forEach((card) => {
       card.style.transform = "";
-    });
-  });
-
-  magneticElements.forEach((element) => {
-    element.addEventListener("pointermove", (event) => {
-      const rect = element.getBoundingClientRect();
-      const x = event.clientX - rect.left - rect.width / 2;
-      const y = event.clientY - rect.top - rect.height / 2;
-      element.style.transform = `translate3d(${x * 0.12}px, ${y * 0.12}px, 0)`;
-    });
-
-    element.addEventListener("pointerleave", () => {
-      element.style.transform = "";
     });
   });
 
