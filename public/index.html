@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,7 +21,7 @@
         theme: {
           extend: {
             fontFamily: {
-              display: ["IBM Plex Sans", "sans-serif"],
+              display: ["DM Sans", "sans-serif"],
               mono: ["IBM Plex Mono", "monospace"],
             },
             colors: {
@@ -34,11 +34,12 @@
               paper: "#F3F8FD",
               gain: "#26A69A",
               loss: "#EF5350",
-              ember: "#F59E0B",
+              ember: "#F97316",
             },
             boxShadow: {
               soft: "0 30px 80px rgba(2, 12, 25, 0.35)",
               glow: "0 0 0 1px rgba(88, 179, 255, 0.12), 0 20px 60px rgba(5, 21, 39, 0.42)",
+              cta: "0 12px 40px rgba(249, 115, 22, 0.35)",
             },
           },
         },
@@ -47,6 +48,7 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body class="bg-ink text-paper antialiased selection:bg-sky selection:text-ink">
+    <div class="cursor-aura" aria-hidden="true"></div>
     <div class="min-h-screen overflow-hidden">
       <main id="hero">
         <section class="hero-shell relative border-b border-white/10 px-4 pb-16 pt-4 md:px-6 md:pb-20">
@@ -74,7 +76,7 @@
                 </div>
                 <a
                   href="#cta"
-                  class="cursor-pointer border border-white/15 bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-sky focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink"
+                  class="magnetic cursor-pointer border border-white/15 bg-white px-5 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-sky focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink"
                 >
                   Demander une démo
                 </a>
@@ -100,28 +102,31 @@
               </div>
             </div>
 
-            <div class="grid gap-10 pt-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
+            <div class="grid gap-10 pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
               <div class="reveal">
-                <p class="font-mono text-xs uppercase tracking-[0.22em] text-sky/80">Style 03 · Conversion SaaS + desk technique</p>
-                <h1 class="mt-6 max-w-5xl font-display text-[3rem] font-semibold leading-[0.94] tracking-[-0.05em] text-white sm:text-[4.4rem] lg:text-[6.15rem]">
-                  Passez d’un trading nerveux
-                  <span class="block text-white/60">à une exécution plus claire.</span>
+                <div class="inline-flex items-center gap-3 border border-ember/20 bg-ember/10 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] text-ember">
+                  <span class="status-dot"></span>
+                  Focus challenge prop firm
+                </div>
+                <h1 class="mt-6 max-w-5xl font-display text-[3rem] font-extrabold leading-[0.92] tracking-[-0.06em] text-white sm:text-[4.6rem] lg:text-[6.5rem]">
+                  Gagnez en précision.
+                  <span class="block text-sky">Réduisez l’exécution inutile.</span>
                 </h1>
-                <p class="mt-8 max-w-2xl text-lg leading-8 text-white/70 md:text-xl">
-                  Ionos Pora aide les traders à analyser les graphiques avec plus de méthode, respecter une gestion du
-                  risque stricte et aborder les challenges prop firm avec un cadre d’exécution plus cohérent. Le site
-                  assume une logique SaaS: bénéfices clairs, preuves visibles, action rapide.
+                <p class="mt-8 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
+                  Ionos Pora aide les traders à mieux lire les graphiques, filtrer les opportunités, protéger leur
+                  risque et traverser les challenges prop firm avec plus de constance. La page pousse plus fort vers la
+                  conversion: plus de tension visuelle, plus de preuves, plus d’animation.
                 </p>
                 <div class="mt-10 flex flex-col gap-4 sm:flex-row">
                   <a
                     href="#cta"
-                    class="cursor-pointer bg-sky px-7 py-4 text-center text-sm font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7bc5ff] focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-ink"
+                    class="magnetic cta-primary cursor-pointer bg-ember px-7 py-4 text-center text-sm font-semibold text-white shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#ff842f] focus:outline-none focus:ring-2 focus:ring-ember focus:ring-offset-2 focus:ring-offset-ink"
                   >
                     Réserver une présentation
                   </a>
                   <a
                     href="#proof"
-                    class="cursor-pointer border border-white/15 px-7 py-4 text-center text-sm font-semibold text-white/82 transition-all duration-200 hover:border-white/30 hover:bg-white/[0.04] hover:text-white focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-ink"
+                    class="magnetic cursor-pointer border border-white/15 px-7 py-4 text-center text-sm font-semibold text-white/82 transition-all duration-200 hover:border-white/30 hover:bg-white/[0.04] hover:text-white focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-ink"
                   >
                     Voir les preuves de valeur
                   </a>
@@ -129,19 +134,19 @@
 
                 <div class="mt-12 grid gap-4 sm:grid-cols-3">
                   <div class="metric-card reveal-soft border border-white/10 bg-white/[0.03] p-5">
-                    <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/42">Assistance</p>
-                    <p class="mt-3 text-2xl font-semibold text-white">Analyse graphique</p>
-                    <p class="mt-3 text-sm leading-6 text-white/58">Moins de bruit, plus de hiérarchie dans les scénarios.</p>
+                    <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/42">Analyse</p>
+                    <p class="mt-3 text-2xl font-bold text-white">Lecture du marché</p>
+                    <p class="mt-3 text-sm leading-6 text-white/58">Plus de hiérarchie dans les signaux et moins d’entrées forcées.</p>
                   </div>
                   <div class="metric-card reveal-soft border border-white/10 bg-white/[0.03] p-5">
-                    <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/42">Objectif</p>
-                    <p class="mt-3 text-2xl font-semibold text-white">Discipline stable</p>
-                    <p class="mt-3 text-sm leading-6 text-white/58">Le risque reste prioritaire pendant l’exécution.</p>
+                    <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/42">Discipline</p>
+                    <p class="mt-3 text-2xl font-bold text-white">Cadre stable</p>
+                    <p class="mt-3 text-sm leading-6 text-white/58">Le risque reste prioritaire pendant toute l’exécution.</p>
                   </div>
                   <div class="metric-card reveal-soft border border-white/10 bg-white/[0.03] p-5">
-                    <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/42">Usage</p>
-                    <p class="mt-3 text-2xl font-semibold text-white">Challenges prop firm</p>
-                    <p class="mt-3 text-sm leading-6 text-white/58">Un cadre propre pour progresser sans suractivité.</p>
+                    <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/42">Challenge</p>
+                    <p class="mt-3 text-2xl font-bold text-white">Validation propre</p>
+                    <p class="mt-3 text-sm leading-6 text-white/58">Un cadre pensé pour progresser sans suractivité destructrice.</p>
                   </div>
                 </div>
               </div>
@@ -151,7 +156,7 @@
                   <div class="flex items-center justify-between border-b border-white/10 pb-4">
                     <div>
                       <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40">Control panel</p>
-                      <h2 class="mt-2 text-xl font-semibold text-white">Session overview</h2>
+                      <h2 class="mt-2 text-xl font-bold text-white">Session overview</h2>
                     </div>
                     <span class="pulse-tag border border-gain/25 bg-gain/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-gain">
                       Active
@@ -213,17 +218,17 @@
                   </div>
 
                   <div class="mt-6 grid gap-3 sm:grid-cols-3">
-                    <div class="border border-white/8 bg-white/[0.02] p-4">
+                    <div class="counter-card border border-white/8 bg-white/[0.02] p-4">
                       <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/38">Win logic</p>
-                      <p class="mt-3 text-xl font-semibold text-white"><span class="countup" data-target="3">0</span>x</p>
+                      <p class="mt-3 text-xl font-bold text-white"><span class="countup" data-target="3">0</span>x</p>
                     </div>
-                    <div class="border border-white/8 bg-white/[0.02] p-4">
+                    <div class="counter-card border border-white/8 bg-white/[0.02] p-4">
                       <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/38">Decision stack</p>
-                      <p class="mt-3 text-xl font-semibold text-white"><span class="countup" data-target="24">0</span>/7</p>
+                      <p class="mt-3 text-xl font-bold text-white"><span class="countup" data-target="24">0</span>/7</p>
                     </div>
-                    <div class="border border-white/8 bg-white/[0.02] p-4">
+                    <div class="counter-card border border-white/8 bg-white/[0.02] p-4">
                       <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/38">Focus mode</p>
-                      <p class="mt-3 text-xl font-semibold text-white"><span class="countup" data-target="100">0</span>%</p>
+                      <p class="mt-3 text-xl font-bold text-white"><span class="countup" data-target="100">0</span>%</p>
                     </div>
                   </div>
                 </div>
@@ -257,38 +262,38 @@
           <div class="mx-auto max-w-7xl">
             <div class="reveal max-w-3xl">
               <p class="font-mono text-xs uppercase tracking-[0.22em] text-sky/70">Bénéfices</p>
-              <h2 class="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
-                Une landing plus conversion, sans perdre la crédibilité technique.
+              <h2 class="mt-4 text-4xl font-bold tracking-[-0.04em] text-white sm:text-5xl">
+                Une proposition plus agressive, construite pour convertir vite.
               </h2>
               <p class="mt-6 text-lg leading-8 text-white/66">
-                Chaque bloc doit faire avancer la décision: comprendre le produit, sentir sa valeur, puis passer à
-                l’action sans friction inutile.
+                Cette version pousse davantage les bénéfices clés dès la lecture initiale, avec des blocs plus nerveux,
+                plus contrastés et plus animés.
               </p>
             </div>
 
             <div class="mt-12 grid gap-5 lg:grid-cols-3">
               <article class="glass-card reveal border border-white/10 bg-white/[0.03] p-7">
-                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">01 · Read better</p>
-                <h3 class="mt-5 text-3xl font-semibold tracking-[-0.04em] text-white">Voir plus clair sur le graphique</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-ember">01 · Faster read</p>
+                <h3 class="mt-5 text-3xl font-bold tracking-[-0.04em] text-white">Lire plus vite ce qui mérite vraiment votre attention</h3>
                 <p class="mt-4 leading-7 text-white/64">
-                  Ionos Pora aide à hiérarchiser les signaux, clarifier les zones utiles et sortir du bruit qui brouille
-                  la décision.
+                  Le bot réduit le bruit de lecture, recentre l’attention sur les zones utiles et aide à sortir du
+                  réflexe “je vois tout, donc j’agis sur tout”.
                 </p>
               </article>
               <article class="glass-card reveal border border-white/10 bg-white/[0.03] p-7">
-                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">02 · Trade cleaner</p>
-                <h3 class="mt-5 text-3xl font-semibold tracking-[-0.04em] text-white">Exécuter avec plus de cohérence</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-ember">02 · Cleaner decisions</p>
+                <h3 class="mt-5 text-3xl font-bold tracking-[-0.04em] text-white">Décider avec plus de netteté sous pression</h3>
                 <p class="mt-4 leading-7 text-white/64">
-                  Le produit renforce un cadre stable. Les décisions deviennent plus nettes, moins réactives, moins
-                  émotionnelles.
+                  Quand le marché accélère, le cadre garde la décision lisible. Le produit soutient la cohérence plutôt
+                  que la réaction.
                 </p>
               </article>
               <article class="glass-card reveal border border-white/10 bg-white/[0.03] p-7">
-                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">03 · Protect capital</p>
-                <h3 class="mt-5 text-3xl font-semibold tracking-[-0.04em] text-white">Protéger le risque avant tout</h3>
+                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-ember">03 · Safer execution</p>
+                <h3 class="mt-5 text-3xl font-bold tracking-[-0.04em] text-white">Protéger le challenge avant de chercher le trade</h3>
                 <p class="mt-4 leading-7 text-white/64">
-                  La logique reste orientée discipline. Pendant un challenge prop firm, c’est la cohérence du risque qui
-                  fait tenir la progression.
+                  Sur prop firm, la survie du compte dépend d’abord de la discipline. La page martèle ce point plus
+                  clairement et plus fort.
                 </p>
               </article>
             </div>
@@ -297,65 +302,80 @@
 
         <section id="proof" class="border-y border-white/10 bg-ink px-4 py-20 md:px-6 md:py-24">
           <div class="mx-auto max-w-7xl">
-            <div class="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+            <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div class="reveal">
                 <p class="font-mono text-xs uppercase tracking-[0.22em] text-sky/70">Preuve</p>
-                <h2 class="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
-                  Des repères de valeur visibles dès la première lecture.
+                <h2 class="mt-4 text-4xl font-bold tracking-[-0.04em] text-white sm:text-5xl">
+                  Plus de preuve sociale, plus de tension visuelle.
                 </h2>
                 <p class="mt-6 max-w-xl text-lg leading-8 text-white/66">
-                  Une bonne landing conversion doit faire trois choses: rassurer, préciser la promesse et montrer
-                  immédiatement comment le produit s’insère dans le quotidien du trader.
+                  Une landing plus agressive doit rassurer sans s’excuser. Ici, les chiffres, les témoignages et les
+                  cas d’usage sont mis en mouvement pour accentuer la valeur perçue.
                 </p>
               </div>
+
               <div class="grid gap-4 sm:grid-cols-2">
                 <article class="proof-card reveal border border-white/10 bg-white/[0.03] p-6">
-                  <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/38">Live support</p>
-                  <p class="mt-4 text-4xl font-semibold text-white"><span class="countup" data-target="24">0</span>/7</p>
-                  <p class="mt-4 leading-7 text-white/62">Assistant disponible en continu pour soutenir l’analyse et le cadre d’exécution.</p>
+                  <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/38">Availability</p>
+                  <p class="mt-4 text-4xl font-bold text-white"><span class="countup" data-target="24">0</span>/7</p>
+                  <p class="mt-4 leading-7 text-white/62">Assistant disponible en continu pour soutenir l’analyse et garder un cap régulier.</p>
                 </article>
                 <article class="proof-card reveal border border-white/10 bg-white/[0.03] p-6">
                   <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/38">Core pillars</p>
-                  <p class="mt-4 text-4xl font-semibold text-white"><span class="countup" data-target="3">0</span></p>
-                  <p class="mt-4 leading-7 text-white/62">Analyse, challenge prop firm, gestion du risque: la page met les trois piliers au premier plan.</p>
+                  <p class="mt-4 text-4xl font-bold text-white"><span class="countup" data-target="3">0</span></p>
+                  <p class="mt-4 leading-7 text-white/62">Analyse, challenge prop firm, gestion du risque. Trois axes, aucune dispersion.</p>
                 </article>
                 <article class="proof-card reveal border border-white/10 bg-white/[0.03] p-6">
                   <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/38">Decision loop</p>
-                  <p class="mt-4 text-4xl font-semibold text-white"><span class="countup" data-target="3">0</span> steps</p>
-                  <p class="mt-4 leading-7 text-white/62">Observer, filtrer, exécuter: une boucle simple, mémorisable, vendable.</p>
+                  <p class="mt-4 text-4xl font-bold text-white"><span class="countup" data-target="3">0</span> steps</p>
+                  <p class="mt-4 leading-7 text-white/62">Observer, filtrer, exécuter: une boucle simple, forte, mémorisable.</p>
                 </article>
                 <article class="proof-card reveal border border-white/10 bg-white/[0.03] p-6">
                   <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/38">Focus mode</p>
-                  <p class="mt-4 text-4xl font-semibold text-white"><span class="countup" data-target="100">0</span>%</p>
-                  <p class="mt-4 leading-7 text-white/62">Le design pousse vers une seule idée: réduire le bruit pour améliorer la constance.</p>
+                  <p class="mt-4 text-4xl font-bold text-white"><span class="countup" data-target="100">0</span>%</p>
+                  <p class="mt-4 leading-7 text-white/62">Le message du site converge vers une seule promesse: mieux exécuter avec moins de bruit.</p>
                 </article>
               </div>
             </div>
 
-            <div class="mt-12 grid gap-5 xl:grid-cols-3">
-              <article class="testimonial-card reveal border border-white/10 bg-[#0A1320] p-7">
-                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">Use case A</p>
-                <p class="mt-5 text-lg leading-8 text-white/76">
-                  “J’avais surtout besoin d’un cadre. Le produit m’aide à ne plus transformer chaque session en
-                  improvisation.”
-                </p>
-                <p class="mt-6 text-sm font-semibold text-white">Trader en phase de challenge</p>
-              </article>
-              <article class="testimonial-card reveal border border-white/10 bg-[#0A1320] p-7">
-                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">Use case B</p>
-                <p class="mt-5 text-lg leading-8 text-white/76">
-                  “L’intérêt n’est pas de me dire quoi faire. L’intérêt, c’est de mieux trier ce que je vois et mieux
-                  respecter mon risque.”
-                </p>
-                <p class="mt-6 text-sm font-semibold text-white">Trader discret mais régulier</p>
-              </article>
-              <article class="testimonial-card reveal border border-white/10 bg-[#0A1320] p-7">
-                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">Use case C</p>
-                <p class="mt-5 text-lg leading-8 text-white/76">
-                  “Le site et le produit racontent enfin la même chose: plus de structure, moins de gestes inutiles.”
-                </p>
-                <p class="mt-6 text-sm font-semibold text-white">Profil orienté process</p>
-              </article>
+            <div class="testimonial-marquee mt-12">
+              <div class="testimonial-track">
+                <article class="testimonial-card border border-white/10 bg-[#0A1320] p-7">
+                  <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">Use case A</p>
+                  <p class="mt-5 text-lg leading-8 text-white/76">
+                    “J’avais surtout besoin d’un cadre. Le produit m’aide à ne plus transformer chaque session en improvisation.”
+                  </p>
+                  <p class="mt-6 text-sm font-semibold text-white">Trader en phase de challenge</p>
+                </article>
+                <article class="testimonial-card border border-white/10 bg-[#0A1320] p-7">
+                  <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">Use case B</p>
+                  <p class="mt-5 text-lg leading-8 text-white/76">
+                    “L’intérêt n’est pas de me dire quoi faire. L’intérêt, c’est de mieux trier ce que je vois.”
+                  </p>
+                  <p class="mt-6 text-sm font-semibold text-white">Trader discret mais régulier</p>
+                </article>
+                <article class="testimonial-card border border-white/10 bg-[#0A1320] p-7">
+                  <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">Use case C</p>
+                  <p class="mt-5 text-lg leading-8 text-white/76">
+                    “Le site et le produit racontent la même chose: plus de structure, moins de gestes inutiles.”
+                  </p>
+                  <p class="mt-6 text-sm font-semibold text-white">Profil orienté process</p>
+                </article>
+                <article class="testimonial-card border border-white/10 bg-[#0A1320] p-7">
+                  <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">Use case D</p>
+                  <p class="mt-5 text-lg leading-8 text-white/76">
+                    “Ce qui compte, c’est de rester cohérent quand la pression monte. Le cadre aide exactement là.”
+                  </p>
+                  <p class="mt-6 text-sm font-semibold text-white">Trader orienté prop firm</p>
+                </article>
+                <article class="testimonial-card border border-white/10 bg-[#0A1320] p-7" aria-hidden="true">
+                  <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sky/75">Use case A</p>
+                  <p class="mt-5 text-lg leading-8 text-white/76">
+                    “J’avais surtout besoin d’un cadre. Le produit m’aide à ne plus transformer chaque session en improvisation.”
+                  </p>
+                  <p class="mt-6 text-sm font-semibold text-white">Trader en phase de challenge</p>
+                </article>
+              </div>
             </div>
           </div>
         </section>
@@ -364,21 +384,21 @@
           <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.92fr_1.08fr]">
             <div class="reveal">
               <p class="font-mono text-xs uppercase tracking-[0.22em] text-sky/70">Workflow</p>
-              <h2 class="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
+              <h2 class="mt-4 text-4xl font-bold tracking-[-0.04em] text-white sm:text-5xl">
                 Observer. Filtrer. Exécuter.
               </h2>
               <p class="mt-6 max-w-xl text-lg leading-8 text-white/66">
-                La landing garde la logique de desk technique, mais la met au service d’un parcours plus direct vers la
-                conversion.
+                La logique de desk reste là, mais avec plus de tension visuelle, plus de progression dans le scroll et
+                plus d’animation pour soutenir la lecture.
               </p>
             </div>
             <div class="space-y-4">
               <article class="workflow-card reveal grid gap-4 border border-white/10 bg-white/[0.03] p-6 md:grid-cols-[110px_1fr]">
-                <div class="border border-white/10 bg-[#09131f] p-4 font-mono text-xs uppercase tracking-[0.22em] text-sky">
+                <div class="border border-white/10 bg-[#09131f] p-4 font-mono text-xs uppercase tracking-[0.22em] text-ember">
                   Step 01
                 </div>
                 <div>
-                  <h3 class="text-2xl font-semibold text-white">Préparer le cadre</h3>
+                  <h3 class="text-2xl font-bold text-white">Préparer le cadre</h3>
                   <p class="mt-3 leading-7 text-white/64">
                     Définir les conditions du jour, les zones à surveiller et les limites à respecter avant de chercher
                     un trade.
@@ -386,11 +406,11 @@
                 </div>
               </article>
               <article class="workflow-card reveal grid gap-4 border border-white/10 bg-white/[0.03] p-6 md:grid-cols-[110px_1fr]">
-                <div class="border border-white/10 bg-[#09131f] p-4 font-mono text-xs uppercase tracking-[0.22em] text-sky">
+                <div class="border border-white/10 bg-[#09131f] p-4 font-mono text-xs uppercase tracking-[0.22em] text-ember">
                   Step 02
                 </div>
                 <div>
-                  <h3 class="text-2xl font-semibold text-white">Trier les scénarios</h3>
+                  <h3 class="text-2xl font-bold text-white">Trier les scénarios</h3>
                   <p class="mt-3 leading-7 text-white/64">
                     Utiliser l’assistance d’analyse pour écarter les configurations faibles et garder une lecture plus
                     nette des opportunités.
@@ -398,11 +418,11 @@
                 </div>
               </article>
               <article class="workflow-card reveal grid gap-4 border border-white/10 bg-white/[0.03] p-6 md:grid-cols-[110px_1fr]">
-                <div class="border border-white/10 bg-[#09131f] p-4 font-mono text-xs uppercase tracking-[0.22em] text-sky">
+                <div class="border border-white/10 bg-[#09131f] p-4 font-mono text-xs uppercase tracking-[0.22em] text-ember">
                   Step 03
                 </div>
                 <div>
-                  <h3 class="text-2xl font-semibold text-white">Rester cohérent</h3>
+                  <h3 class="text-2xl font-bold text-white">Rester cohérent</h3>
                   <p class="mt-3 leading-7 text-white/64">
                     Exécuter dans un cadre de risque stable pour éviter l’improvisation, protéger le challenge et
                     construire une progression plus propre.
@@ -417,13 +437,13 @@
           <div class="mx-auto max-w-5xl">
             <div class="reveal text-center">
               <p class="font-mono text-xs uppercase tracking-[0.22em] text-sky/70">FAQ</p>
-              <h2 class="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
+              <h2 class="mt-4 text-4xl font-bold tracking-[-0.04em] text-white sm:text-5xl">
                 Les vraies questions.
               </h2>
             </div>
             <div class="mt-12 space-y-4">
               <details class="faq-card reveal border border-white/10 bg-white/[0.03] p-6">
-                <summary class="cursor-pointer list-none text-lg font-semibold text-white">
+                <summary class="cursor-pointer list-none text-lg font-bold text-white">
                   Est-ce que le bot prend les trades à ma place ?
                 </summary>
                 <p class="mt-4 leading-7 text-white/64">
@@ -432,7 +452,7 @@
                 </p>
               </details>
               <details class="faq-card reveal border border-white/10 bg-white/[0.03] p-6">
-                <summary class="cursor-pointer list-none text-lg font-semibold text-white">
+                <summary class="cursor-pointer list-none text-lg font-bold text-white">
                   À qui s’adresse le produit ?
                 </summary>
                 <p class="mt-4 leading-7 text-white/64">
@@ -441,7 +461,7 @@
                 </p>
               </details>
               <details class="faq-card reveal border border-white/10 bg-white/[0.03] p-6">
-                <summary class="cursor-pointer list-none text-lg font-semibold text-white">
+                <summary class="cursor-pointer list-none text-lg font-bold text-white">
                   Quel bénéfice principal faut-il attendre ?
                 </summary>
                 <p class="mt-4 leading-7 text-white/64">
@@ -454,12 +474,12 @@
         </section>
 
         <section id="cta" class="bg-[#0A111B] px-4 py-20 md:px-6 md:py-24">
-          <div class="mx-auto max-w-7xl border border-white/10 bg-white/[0.03] p-8 sm:p-10">
+          <div class="cta-zone mx-auto max-w-7xl border border-white/10 bg-white/[0.03] p-8 sm:p-10">
             <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
               <div class="reveal max-w-3xl">
-                <p class="font-mono text-xs uppercase tracking-[0.22em] text-sky/70">CTA</p>
-                <h2 class="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
-                  Une page pensée pour convertir sans perdre le sérieux du produit.
+                <p class="font-mono text-xs uppercase tracking-[0.22em] text-ember">CTA</p>
+                <h2 class="mt-4 text-4xl font-bold tracking-[-0.04em] text-white sm:text-5xl">
+                  Le site pousse plus fort. Le message devient impossible à manquer.
                 </h2>
                 <p class="mt-6 text-lg leading-8 text-white/66">
                   Si votre objectif est de mieux lire les graphiques, tenir un cadre de risque strict et progresser sur
@@ -477,7 +497,7 @@
                 />
                 <button
                   type="button"
-                  class="cursor-pointer bg-sky px-6 py-4 text-sm font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7bc5ff] focus:outline-none focus:ring-2 focus:ring-sky focus:ring-offset-2 focus:ring-offset-[#09131f]"
+                  class="magnetic cta-primary cursor-pointer bg-ember px-6 py-4 text-sm font-semibold text-white shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#ff842f] focus:outline-none focus:ring-2 focus:ring-ember focus:ring-offset-2 focus:ring-offset-[#09131f]"
                 >
                   Être recontacté
                 </button>

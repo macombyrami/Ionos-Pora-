@@ -58,7 +58,22 @@ document.querySelectorAll(".countup").forEach((element) => counterObserver.obser
 
 if (!prefersReducedMotion) {
   const hero = document.querySelector(".hero-shell");
-  const floatingCards = document.querySelectorAll(".metric-card, .proof-card, .testimonial-card");
+  const aura = document.querySelector(".cursor-aura");
+  const floatingCards = document.querySelectorAll(".metric-card, .proof-card, .counter-card");
+  const magneticElements = document.querySelectorAll(".magnetic");
+
+  document.addEventListener("pointermove", (event) => {
+    if (aura) {
+      aura.style.opacity = "1";
+      aura.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+    }
+  });
+
+  document.addEventListener("pointerleave", () => {
+    if (aura) {
+      aura.style.opacity = "0";
+    }
+  });
 
   hero?.addEventListener("pointermove", (event) => {
     const rect = hero.getBoundingClientRect();
@@ -67,8 +82,8 @@ if (!prefersReducedMotion) {
 
     floatingCards.forEach((card, index) => {
       const depth = (index % 3) + 1;
-      const moveX = offsetX * depth * 6;
-      const moveY = offsetY * depth * 6;
+      const moveX = offsetX * depth * 8;
+      const moveY = offsetY * depth * 8;
       card.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
     });
   });
@@ -78,4 +93,29 @@ if (!prefersReducedMotion) {
       card.style.transform = "";
     });
   });
+
+  magneticElements.forEach((element) => {
+    element.addEventListener("pointermove", (event) => {
+      const rect = element.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      element.style.transform = `translate3d(${x * 0.12}px, ${y * 0.12}px, 0)`;
+    });
+
+    element.addEventListener("pointerleave", () => {
+      element.style.transform = "";
+    });
+  });
+
+  const terminalRows = document.querySelectorAll(".terminal-row");
+  let activeRow = 0;
+
+  setInterval(() => {
+    terminalRows.forEach((row, index) => {
+      row.style.borderColor = index === activeRow ? "rgba(88, 179, 255, 0.26)" : "";
+      row.style.backgroundColor = index === activeRow ? "rgba(255, 255, 255, 0.05)" : "";
+    });
+
+    activeRow = (activeRow + 1) % terminalRows.length;
+  }, 1800);
 }
