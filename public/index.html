@@ -1,45 +1,44 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ionos Pora | Assistant de trading pour prop firms</title>
+    <title>Ionos Pora | AI Trading Assistant</title>
     <meta
       name="description"
-      content="Ionos Pora est l'assistant de trading intelligent qui aide les traders a structurer leur analyse, renforcer leur discipline et performer avec plus de constance sur les challenges prop firms."
+      content="Ionos Pora is an AI-powered trading assistant built for discipline, clarity, and better decision-making. Structured analysis, risk control, and consistent execution for serious traders."
     />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              display: ["Syne", "sans-serif"],
+              display: ["Plus Jakarta Sans", "Inter", "sans-serif"],
               sans: ["Inter", "sans-serif"],
               mono: ["IBM Plex Mono", "monospace"],
             },
             colors: {
-              ink: "#061018",
-              panel: "#0b1621",
-              edge: "#13283b",
-              mist: "#8ea6bb",
-              paper: "#f4f8fb",
-              sky: "#67c2ff",
-              gain: "#41d6b4",
-              ember: "#ff9e57",
-              rose: "#ff7a8f",
+              ink: "#04070c",
+              paper: "#f6f9fc",
+              sky: "#74c8ff",
+              cyan: "#4de3ff",
+              panel: "#0b1119",
+              line: "#1a2634",
+              mist: "#9db0c3",
+              gain: "#45d3af",
+              ember: "#ffad66",
             },
             boxShadow: {
-              atmos: "0 30px 90px rgba(2, 11, 21, 0.42)",
-              neon: "0 0 0 1px rgba(103, 194, 255, 0.18), 0 30px 90px rgba(2, 11, 21, 0.52)",
+              premium: "0 30px 80px rgba(2, 8, 18, 0.5)",
+              glow: "0 0 0 1px rgba(116, 200, 255, 0.16), 0 30px 80px rgba(2, 8, 18, 0.58)",
             },
           },
         },
@@ -50,472 +49,417 @@
   <body class="bg-ink font-sans text-paper antialiased selection:bg-sky selection:text-ink">
     <div class="page-shell min-h-screen overflow-hidden">
       <main id="top">
-        <section class="hero-shell relative px-4 pb-20 pt-4 md:px-6 md:pb-28">
+        <section class="hero-shell relative px-4 pb-24 pt-5 md:px-6 md:pb-32">
           <canvas class="line-waves-canvas" aria-hidden="true"></canvas>
           <div class="ambient ambient-a"></div>
           <div class="ambient ambient-b"></div>
           <div class="ambient ambient-c"></div>
-          <div class="ambient ambient-d"></div>
 
           <div class="mx-auto max-w-7xl">
-            <header class="site-header border-b border-white/10 pb-4">
-              <nav class="flex items-center justify-between gap-6" aria-label="Navigation principale">
+            <header class="site-header border-b border-white/8 pb-4">
+              <nav class="flex items-center justify-between gap-6" aria-label="Primary navigation">
                 <a href="#top" class="brand-mark flex items-center gap-4">
-                  <span class="brand-mark__tile flex h-12 w-12 items-center justify-center border border-white/12 bg-white/[0.06] font-mono text-xs font-semibold uppercase tracking-[0.28em] text-white">
+                  <span class="brand-mark__tile flex h-11 w-11 items-center justify-center border border-white/10 bg-white/[0.04] font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-white">
                     IP
                   </span>
                   <div>
-                    <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-white/42">Trading copilot</p>
+                    <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-white/40">AI trading assistant</p>
                     <p class="text-sm font-semibold text-white">Ionos Pora</p>
                   </div>
                 </a>
-                <div class="hidden items-center gap-8 text-sm text-white/66 md:flex">
-                  <a class="nav-link" href="#positioning">Positionnement</a>
-                  <a class="nav-link" href="#advantages">Avantages</a>
-                  <a class="nav-link" href="#method">Methode</a>
+                <div class="hidden items-center gap-8 text-sm text-white/62 md:flex">
+                  <a class="nav-link" href="#value">Value</a>
+                  <a class="nav-link" href="#philosophy">Philosophy</a>
+                  <a class="nav-link" href="#features">Features</a>
                   <a class="nav-link" href="#faq">FAQ</a>
                 </div>
-                <a
-                  href="#cta"
-                  class="hidden items-center justify-center border border-sky/40 bg-sky/12 px-4 py-2 text-sm font-semibold text-sky transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky/20 md:inline-flex"
-                >
-                  Demander une demo
-                </a>
+                <a href="#final-cta" class="cta-ghost hidden md:inline-flex">Access dashboard</a>
               </nav>
             </header>
 
-            <div class="hero-band mt-4 grid gap-3 border-y border-white/10 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/42 md:grid-cols-4">
-              <div class="hero-band__item">
-                <span>Mode</span>
-                <strong class="text-sky">Prop firm discipline</strong>
+            <div class="hero-status mt-5 grid gap-3 border-y border-white/8 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40 md:grid-cols-4">
+              <div class="hero-status__item">
+                <span>Assistant mode</span>
+                <strong>Structured analysis</strong>
               </div>
-              <div class="hero-band__item">
-                <span>Lecture</span>
-                <strong class="text-white/80">Analyse graphique guidee</strong>
+              <div class="hero-status__item">
+                <span>Primary signal</span>
+                <strong>Decision quality</strong>
               </div>
-              <div class="hero-band__item">
-                <span>Cadre</span>
-                <strong class="text-gain">Risque structure</strong>
+              <div class="hero-status__item">
+                <span>Risk posture</span>
+                <strong>Strict controls</strong>
               </div>
-              <div class="hero-band__item">
-                <span>Presence</span>
-                <strong class="text-ember">Assistant disponible 24/7</strong>
+              <div class="hero-status__item">
+                <span>Time focus</span>
+                <strong>Consistency over time</strong>
               </div>
             </div>
 
-            <div class="grid gap-14 pt-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div class="grid gap-16 pt-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div class="hero-copy">
-                <div
-                  class="inline-flex items-center gap-3 border border-sky/20 bg-sky/10 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.24em] text-sky"
-                  data-aos="fade-right"
-                  data-aos-duration="800"
-                >
+                <div class="eyebrow inline-flex items-center gap-3">
                   <span class="status-dot"></span>
-                  Discipline engine active
+                  Built for discipline, not dopamine
                 </div>
-
-                <h1
-                  class="hero-title mt-7 max-w-5xl font-display text-[3.45rem] font-extrabold leading-[0.88] tracking-[-0.08em] text-white sm:text-[4.9rem] lg:text-[6.4rem]"
-                  data-aos="fade-up"
-                  data-aos-duration="900"
-                >
-                  Tradez avec plus de clarte.
-                  <span class="hero-title__accent block text-sky">Executez avec plus de discipline.</span>
-                  <span class="block text-white">Progressez avec plus de constance.</span>
+                <h1 class="hero-title mt-7 max-w-5xl font-display text-[3.4rem] font-extrabold leading-[0.88] tracking-[-0.08em] text-white sm:text-[5rem] lg:text-[6.2rem]">
+                  A trading assistant.
+                  <span class="block text-sky">Not a magic promise.</span>
                 </h1>
-
-                <p
-                  class="mt-8 max-w-3xl text-lg leading-8 text-white/72 md:text-xl"
-                  data-aos="fade-up"
-                  data-aos-delay="120"
-                  data-aos-duration="850"
-                >
-                  Ionos Pora est l'assistant de trading intelligent concu pour les traders qui refusent
-                  l'improvisation. Il aide a structurer l'analyse, filtrer les opportunites utiles et maintenir une
-                  gestion du risque rigoureuse, notamment dans l'univers exigeant des prop firms.
+                <p class="mt-8 max-w-2xl text-lg leading-8 text-white/70 md:text-xl">
+                  Ionos Pora helps traders slow down, read context clearly, validate scenarios before acting,
+                  and execute with tighter discipline. It is designed to support judgment, not replace it.
                 </p>
-
-                <div
-                  class="mt-10 flex flex-col gap-4 sm:flex-row"
-                  data-aos="fade-up"
-                  data-aos-delay="220"
-                  data-aos-duration="850"
-                >
-                  <a
-                    href="#positioning"
-                    class="inline-flex items-center justify-center border border-sky bg-sky px-6 py-3 text-sm font-semibold text-ink transition-transform duration-200 hover:-translate-y-0.5"
-                  >
-                    Decouvrir Ionos Pora
-                  </a>
-                  <a
-                    href="#method"
-                    class="inline-flex items-center justify-center border border-white/12 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/[0.08]"
-                  >
-                    Voir la methode
-                  </a>
+                <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+                  <a href="#interface" class="cta-primary">Start tracking</a>
+                  <a href="#process" class="cta-secondary">See how it works</a>
                 </div>
 
                 <div class="mt-12 grid gap-4 sm:grid-cols-3">
-                  <article class="value-chip" data-aos="fade-up" data-aos-delay="0">
-                    <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-white/42">Focus</p>
-                    <p class="mt-3 text-xl font-bold text-white">Decisions plus nettes</p>
-                    <p class="mt-3 text-sm leading-6 text-white/60">Un cadre clair avant chaque execution.</p>
+                  <article class="stat-tile">
+                    <p class="stat-tile__label">Decision clarity</p>
+                    <strong class="stat-tile__value" data-counter="91">91</strong>
+                    <p class="stat-tile__body">Structured prompts before execution.</p>
                   </article>
-                  <article class="value-chip" data-aos="fade-up" data-aos-delay="90">
-                    <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-white/42">Risque</p>
-                    <p class="mt-3 text-xl font-bold text-white">Gestion plus stricte</p>
-                    <p class="mt-3 text-sm leading-6 text-white/60">Des limites visibles pour rester coherent.</p>
+                  <article class="stat-tile">
+                    <p class="stat-tile__label">Discipline score</p>
+                    <strong class="stat-tile__value" data-counter="84">84</strong>
+                    <p class="stat-tile__body">Measured against rules, timing, and risk adherence.</p>
                   </article>
-                  <article class="value-chip" data-aos="fade-up" data-aos-delay="180">
-                    <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-white/42">Execution</p>
-                    <p class="mt-3 text-xl font-bold text-white">Constante plus solide</p>
-                    <p class="mt-3 text-sm leading-6 text-white/60">Une routine propre session apres session.</p>
+                  <article class="stat-tile">
+                    <p class="stat-tile__label">Consistency window</p>
+                    <strong class="stat-tile__value" data-counter="30">30</strong>
+                    <p class="stat-tile__body">Track behavior across sessions, not isolated trades.</p>
                   </article>
                 </div>
               </div>
 
-              <div class="hero-visual" data-aos="zoom-in-left" data-aos-duration="1100">
-                <div class="command-board shadow-neon" id="command-board">
-                  <div class="command-board__grid"></div>
-                  <div class="command-board__glow"></div>
+              <div class="hero-visual">
+                <div class="dashboard-shell shadow-glow" id="dashboard-shell">
+                  <div class="dashboard-shell__grid"></div>
+                  <div class="dashboard-shell__glow"></div>
 
-                  <div class="command-board__topbar">
+                  <div class="dashboard-shell__header">
                     <div>
-                      <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-white/36">Execution cockpit</p>
-                      <h2 class="mt-2 text-xl font-bold text-white md:text-2xl">Assistant de trading discipline</h2>
+                      <p class="panel-kicker">Execution dashboard</p>
+                      <h2 class="mt-2 text-xl font-bold text-white md:text-2xl">Structured intelligence for disciplined traders</h2>
                     </div>
-                    <div class="risk-pill">
-                      <span class="risk-pill__dot"></span>
-                      Validation logic
-                    </div>
-                  </div>
-
-                  <div class="command-board__hero">
-                    <div class="orbital-stage">
-                      <div class="orbital-stage__halo"></div>
-                      <div class="orbital-stage__orb" data-depth="30">
-                        <div class="orbital-ring orbital-ring-a"></div>
-                        <div class="orbital-ring orbital-ring-b"></div>
-                        <div class="orbital-core"></div>
-                        <div class="orbital-cross"></div>
-                      </div>
-
-                      <article class="signal-card signal-card-a" data-depth="22">
-                        <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">Scenario</p>
-                        <h3 class="mt-3 text-sm font-semibold text-white">Lecture avant action</h3>
-                        <p class="mt-2 text-sm leading-6 text-white/58">Le contexte prime sur l'impulsion.</p>
-                      </article>
-
-                      <article class="signal-card signal-card-b" data-depth="18">
-                        <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">Challenge</p>
-                        <h3 class="mt-3 text-sm font-semibold text-white">Progression plus propre</h3>
-                        <p class="mt-2 text-sm leading-6 text-white/58">Tenir les regles sans perdre le cap.</p>
-                      </article>
-
-                      <article class="signal-card signal-card-c" data-depth="28">
-                        <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">Risk</p>
-                        <h3 class="mt-3 text-sm font-semibold text-white">Execution cadree</h3>
-                        <p class="mt-2 text-sm leading-6 text-white/58">Taille, invalidation, patience.</p>
-                      </article>
-                    </div>
-
-                    <div class="tape-panel">
-                      <div class="tape-panel__header">
-                        <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-white/38">Market surface</p>
-                        <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-sky/75">Signal quality</p>
-                      </div>
-                      <div class="signal-bars" aria-hidden="true">
-                        <span class="signal-bars__bar"></span>
-                        <span class="signal-bars__bar"></span>
-                        <span class="signal-bars__bar"></span>
-                        <span class="signal-bars__bar"></span>
-                        <span class="signal-bars__bar"></span>
-                        <span class="signal-bars__bar"></span>
-                        <span class="signal-bars__bar"></span>
-                        <span class="signal-bars__bar"></span>
-                        <span class="signal-bars__bar"></span>
-                        <span class="signal-bars__bar"></span>
-                      </div>
+                    <div class="panel-badge">
+                      <span class="panel-badge__dot"></span>
+                      Live review state
                     </div>
                   </div>
 
-                  <div class="command-board__footer">
-                    <article class="terminal-row">
-                      <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/36">Analyse</p>
-                      <p class="mt-3 text-sm font-medium text-white/82">Lecture des zones, des structures et du contexte.</p>
-                    </article>
-                    <article class="terminal-row">
-                      <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/36">Filtrage</p>
-                      <p class="mt-3 text-sm font-medium text-white/82">Priorisation des opportunites pertinentes.</p>
-                    </article>
-                    <article class="terminal-row">
-                      <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-white/36">Discipline</p>
-                      <p class="mt-3 text-sm font-medium text-white/82">Respect du plan, du risque et du tempo.</p>
-                    </article>
-                  </div>
-                </div>
+                  <div class="dashboard-shell__body">
+                    <section class="dashboard-main">
+                      <div class="discipline-meter glass-card" data-depth="22">
+                        <div class="flex items-start justify-between gap-4">
+                          <div>
+                            <p class="panel-kicker">Discipline score</p>
+                            <strong class="discipline-meter__score" data-counter="84">84</strong>
+                          </div>
+                          <div class="discipline-meter__ring">
+                            <span class="discipline-meter__ring-core"></span>
+                          </div>
+                        </div>
+                        <div class="discipline-meter__track">
+                          <span class="discipline-meter__fill"></span>
+                        </div>
+                        <p class="mt-4 text-sm leading-7 text-white/60">
+                          Score derived from timing, risk sizing, rule adherence, and post-trade review quality.
+                        </p>
+                      </div>
 
-                <div class="hero-proof-grid mt-5 grid gap-4 md:grid-cols-3">
-                  <article class="proof-chip" data-aos="fade-up" data-aos-delay="90">
-                    <strong data-counter="24">24</strong>
-                    <span>Heures de disponibilite</span>
-                  </article>
-                  <article class="proof-chip" data-aos="fade-up" data-aos-delay="160">
-                    <strong data-counter="3">3</strong>
-                    <span>Piliers: lecture, filtrage, risque</span>
-                  </article>
-                  <article class="proof-chip" data-aos="fade-up" data-aos-delay="230">
-                    <strong data-counter="1">1</strong>
-                    <span>Objectif: plus de coherence</span>
-                  </article>
+                      <div class="chart-panel glass-card" data-depth="26">
+                        <div class="flex items-center justify-between gap-3">
+                          <div>
+                            <p class="panel-kicker">Consistency over time</p>
+                            <h3 class="mt-2 text-lg font-semibold text-white">Behavior trend</h3>
+                          </div>
+                          <span class="chart-panel__tag">Stable</span>
+                        </div>
+                        <div class="chart-grid">
+                          <svg class="chart-grid__svg" viewBox="0 0 480 180" aria-hidden="true">
+                            <path class="chart-grid__path chart-grid__path-muted" d="M0 130 C50 124, 90 110, 130 112 C180 115, 200 98, 250 94 C300 90, 330 98, 370 84 C405 72, 430 74, 480 54" />
+                            <path class="chart-grid__path chart-grid__path-main" d="M0 144 C46 136, 94 126, 138 120 C184 114, 220 104, 258 98 C310 90, 350 84, 390 66 C422 54, 452 48, 480 32" />
+                          </svg>
+                          <div class="chart-grid__labels">
+                            <span>Week 1</span>
+                            <span>Week 2</span>
+                            <span>Week 3</span>
+                            <span>Week 4</span>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <aside class="dashboard-side">
+                      <article class="glass-card signal-log" data-depth="18">
+                        <div class="flex items-center justify-between gap-3">
+                          <p class="panel-kicker">Execution journal</p>
+                          <span class="signal-log__tag">3 reviews pending</span>
+                        </div>
+                        <ul class="signal-log__list">
+                          <li>
+                            <span>08:42</span>
+                            <p>Scenario rejected: risk-to-context ratio below threshold.</p>
+                          </li>
+                          <li>
+                            <span>10:18</span>
+                            <p>Execution delayed: waiting for confirmation on higher timeframe.</p>
+                          </li>
+                          <li>
+                            <span>14:05</span>
+                            <p>Plan respected: stop placement aligned with session rules.</p>
+                          </li>
+                        </ul>
+                      </article>
+
+                      <article class="glass-card mini-metrics" data-depth="12">
+                        <p class="panel-kicker">Scenario review</p>
+                        <div class="mini-metrics__row">
+                          <span>Validated setups</span>
+                          <strong>07</strong>
+                        </div>
+                        <div class="mini-metrics__row">
+                          <span>Skipped trades</span>
+                          <strong>12</strong>
+                        </div>
+                        <div class="mini-metrics__row">
+                          <span>Risk violations</span>
+                          <strong>00</strong>
+                        </div>
+                      </article>
+                    </aside>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="positioning" class="section-shell border-y border-white/10 bg-[#07131d] px-4 py-20 md:px-6 md:py-24">
+        <section id="value" class="section-shell px-4 py-24 md:px-6">
           <div class="mx-auto max-w-7xl">
-            <div class="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
-              <div data-aos="fade-right">
-                <p class="section-kicker">Positionnement</p>
-                <h2 class="section-title mt-4 max-w-3xl">Un assistant de trading premium, pas une promesse magique.</h2>
-              </div>
-              <div data-aos="fade-left" data-aos-delay="120">
-                <p class="max-w-3xl text-lg leading-8 text-white/68">
-                  Ionos Pora aide les traders debutants comme experimentes a prendre de meilleures decisions avec plus
-                  de methode. La promesse est simple: clarifier l'analyse, guider l'execution et renforcer la
-                  discipline necessaire pour progresser dans les marches et sur les challenges prop firms.
-                </p>
-              </div>
+            <div class="max-w-3xl reveal-block">
+              <p class="section-kicker">Value proposition</p>
+              <h2 class="section-title mt-4">Built to support the three traits serious traders actually need.</h2>
             </div>
-
             <div class="mt-12 grid gap-5 lg:grid-cols-3">
-              <article class="premium-card" data-aos="fade-up">
-                <p class="premium-card__index">01</p>
-                <h3 class="mt-5 text-3xl font-bold tracking-[-0.04em] text-white">Valider sans se disperser</h3>
-                <p class="mt-4 leading-7 text-white/64">
-                  Le bot soutient une progression structuree pendant les challenges, la ou la pression pousse
-                  generalement a forcer les setups ou casser les limites.
-                </p>
-              </article>
-              <article class="premium-card" data-aos="fade-up" data-aos-delay="90">
-                <p class="premium-card__index">02</p>
-                <h3 class="mt-5 text-3xl font-bold tracking-[-0.04em] text-white">Lire avant d'executer</h3>
-                <p class="mt-4 leading-7 text-white/64">
-                  Ionos Pora ne remplace pas le trader. Il l'aide a lire le marche plus proprement, a hierarchiser les
-                  scenarios et a reduire les decisions prises trop vite.
-                </p>
-              </article>
-              <article class="premium-card" data-aos="fade-up" data-aos-delay="180">
-                <p class="premium-card__index">03</p>
-                <h3 class="mt-5 text-3xl font-bold tracking-[-0.04em] text-white">Rester coherent dans le temps</h3>
-                <p class="mt-4 leading-7 text-white/64">
-                  La vraie valeur est dans la repetition d'un cadre solide: preparation, filtre, execution, puis
-                  discipline de risque maintenue session apres session.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="advantages" class="section-shell bg-[#09111a] px-4 py-20 md:px-6 md:py-24">
-          <div class="mx-auto max-w-7xl">
-            <div class="max-w-3xl" data-aos="fade-up">
-              <p class="section-kicker text-ember">Avantages</p>
-              <h2 class="section-title mt-4">Une interface qui inspire la precision, avec des messages qui vendent la discipline.</h2>
-            </div>
-
-            <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              <article class="advantage-card" data-aos="zoom-in-up">
-                <p class="advantage-card__label">Debutants</p>
-                <h3 class="mt-4 text-2xl font-bold text-white">Monter en niveau plus vite</h3>
-                <p class="mt-3 leading-7 text-white/62">
-                  Un produit qui rend la structure concrete et aide a installer des habitudes de trader plus saines.
-                </p>
-              </article>
-              <article class="advantage-card" data-aos="zoom-in-up" data-aos-delay="90">
-                <p class="advantage-card__label">Traders actifs</p>
-                <h3 class="mt-4 text-2xl font-bold text-white">Reprendre du recul</h3>
-                <p class="mt-3 leading-7 text-white/62">
-                  Une couche d'assistance qui renforce la qualite de lecture et limite les executions impulsives.
-                </p>
-              </article>
-              <article class="advantage-card" data-aos="zoom-in-up" data-aos-delay="180">
-                <p class="advantage-card__label">Prop firms</p>
-                <h3 class="mt-4 text-2xl font-bold text-white">Rester dans le cadre</h3>
-                <p class="mt-3 leading-7 text-white/62">
-                  Un discours aligne avec l'environnement des evaluations: constance, patience, risque maitrise.
-                </p>
-              </article>
-              <article class="advantage-card" data-aos="zoom-in-up" data-aos-delay="270">
-                <p class="advantage-card__label">Marque</p>
-                <h3 class="mt-4 text-2xl font-bold text-white">Presence plus premium</h3>
-                <p class="mt-3 leading-7 text-white/62">
-                  Une landing plus tendue, plus propre et plus memorable pour affirmer un positionnement serieux.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="method" class="section-shell border-y border-white/10 bg-ink px-4 py-20 md:px-6 md:py-24">
-          <div class="mx-auto max-w-7xl">
-            <div class="grid gap-10 lg:grid-cols-[0.84fr_1.16fr]">
-              <div data-aos="fade-right">
-                <p class="section-kicker">Methode</p>
-                <h2 class="section-title mt-4">Observer. Filtrer. Executer. Sans casser le plan.</h2>
-                <p class="mt-6 max-w-xl text-lg leading-8 text-white/66">
-                  Ionos Pora se raconte comme une boucle operationnelle simple. C'est le bon niveau de promesse pour
-                  un assistant qui soutient la progression sans retirer la responsabilite du trader.
-                </p>
-              </div>
-
-              <div class="method-stack">
-                <article class="method-step" data-aos="fade-left">
-                  <span class="method-step__index">Etape 01</span>
-                  <h3>Preparer la session</h3>
-                  <p>
-                    Poser les zones, les temporalites, les invalidations et les limites avant que l'emotion n'entre
-                    dans la boucle.
-                  </p>
-                </article>
-                <article class="method-step" data-aos="fade-left" data-aos-delay="100">
-                  <span class="method-step__index">Etape 02</span>
-                  <h3>Filtrer les scenarios</h3>
-                  <p>
-                    Ne retenir que les contextes qui respectent le plan initial, la lecture du marche et la logique de
-                    risque du jour.
-                  </p>
-                </article>
-                <article class="method-step" data-aos="fade-left" data-aos-delay="200">
-                  <span class="method-step__index">Etape 03</span>
-                  <h3>Executer avec constance</h3>
-                  <p>
-                    Garder une execution plus nette, plus lucide et plus professionnelle, meme sous pression.
-                  </p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-shell bg-[#09111a] px-4 py-20 md:px-6 md:py-24">
-          <div class="mx-auto max-w-7xl">
-            <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-              <div class="insight-panel" data-aos="fade-up-right">
-                <p class="section-kicker text-sky/70">Pourquoi ca convertit mieux</p>
-                <h2 class="section-title mt-4">Le message sort enfin du flou.</h2>
-                <p class="mt-6 max-w-2xl text-lg leading-8 text-white/66">
-                  Au lieu de vendre une promesse generique de performance, la landing vend un benefice credible:
-                  devenir un trader plus structure, plus discipline et plus constant. C'est plus fort commercialement
-                  parce que c'est plus juste.
-                </p>
-              </div>
-
-              <div class="grid gap-4 md:grid-cols-2">
-                <article class="proof-card" data-aos="flip-left">
-                  <span class="proof-card__value" data-counter="3">3</span>
-                  <p class="proof-card__label">Axes de progression</p>
-                  <p class="proof-card__body">Analyse, execution, gestion du risque.</p>
-                </article>
-                <article class="proof-card" data-aos="flip-left" data-aos-delay="90">
-                  <span class="proof-card__value" data-counter="24">24</span>
-                  <p class="proof-card__label">Heures de presence</p>
-                  <p class="proof-card__body">Une assistance disponible en continu.</p>
-                </article>
-                <article class="proof-card" data-aos="flip-left" data-aos-delay="180">
-                  <span class="proof-card__value" data-counter="100">100</span>
-                  <p class="proof-card__label">Pour cent centre sur la discipline</p>
-                  <p class="proof-card__body">Un cadre plus robuste avant toute execution.</p>
-                </article>
-                <article class="proof-card" data-aos="flip-left" data-aos-delay="270">
-                  <span class="proof-card__value" data-counter="1">1</span>
-                  <p class="proof-card__label">Cap strategique</p>
-                  <p class="proof-card__body">Aider chaque trader a atteindre ses objectifs avec plus de methode.</p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="faq" class="section-shell border-y border-white/10 bg-[#061018] px-4 py-20 md:px-6 md:py-24">
-          <div class="mx-auto max-w-5xl">
-            <div class="text-center" data-aos="fade-up">
-              <p class="section-kicker">FAQ</p>
-              <h2 class="section-title mt-4">Questions frequentes.</h2>
-            </div>
-
-            <div class="mt-12 space-y-4">
-              <details class="faq-card" data-aos="fade-up">
-                <summary>Est-ce que le bot prend les trades a ma place ?</summary>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <span></span>
+                </div>
+                <h3>Clear decisions</h3>
                 <p>
-                  Non. Ionos Pora agit comme un assistant de trading. Il soutient l'analyse, le filtrage et le cadre
-                  de risque, mais la decision finale reste humaine.
+                  Turn noisy market context into a cleaner sequence of observations, validations, and execution cues.
                 </p>
-              </details>
-              <details class="faq-card" data-aos="fade-up" data-aos-delay="90">
-                <summary>A qui s'adresse Ionos Pora ?</summary>
+              </article>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <span></span>
+                </div>
+                <h3>Strict risk management</h3>
                 <p>
-                  Aux debutants qui veulent progresser avec une vraie methode, comme aux traders plus experimentes qui
-                  cherchent plus de coherence et de discipline dans leur execution.
+                  Keep sizing, invalidation, and session rules visible so discipline stays operational, not theoretical.
                 </p>
-              </details>
-              <details class="faq-card" data-aos="fade-up" data-aos-delay="180">
-                <summary>Pourquoi le focus sur les prop firms ?</summary>
+              </article>
+              <article class="feature-card">
+                <div class="feature-icon">
+                  <span></span>
+                </div>
+                <h3>Consistent execution</h3>
                 <p>
-                  Parce que cet environnement demande une discipline tres stricte. La landing met donc en avant ce que
-                  le produit apporte de plus utile: structure, patience et respect du risque.
+                  Measure how you act over time so behavior improves session after session, not only when markets are easy.
                 </p>
-              </details>
+              </article>
             </div>
           </div>
         </section>
 
-        <section id="cta" class="section-shell bg-[#09111a] px-4 py-20 md:px-6 md:py-24">
-          <div class="mx-auto max-w-6xl">
-            <div class="cta-panel" data-aos="zoom-in">
-              <p class="section-kicker text-sky/70">Ready to scale with discipline</p>
-              <h2 class="section-title mt-4 max-w-4xl">
-                Une landing plus nette pour un assistant de trading qui veut inspirer la rigueur des la premiere seconde.
-              </h2>
-              <p class="mt-6 max-w-3xl text-lg leading-8 text-white/68">
-                Ionos Pora n'est pas vendu comme un raccourci. Il est presente comme ce qu'il doit etre: un levier de
-                clarte, de discipline et de progression pour des traders qui veulent construire des resultats plus
-                coherents.
+        <section id="philosophy" class="section-shell border-y border-white/8 bg-[#060b12] px-4 py-24 md:px-6">
+          <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="reveal-block">
+              <p class="section-kicker">Philosophy</p>
+              <h2 class="editorial-title mt-4">The best trade is often the one filtered out before emotion gets involved.</h2>
+            </div>
+            <div class="reveal-block">
+              <p class="max-w-2xl text-lg leading-9 text-white/68">
+                Ionos Pora is not designed around speed, excitement, or prediction theater. It is designed around
+                cleaner process. The product exists to help traders pause, read the situation with more clarity, and
+                act only when structure, context, and risk all align. That is what trust looks like in a serious tool.
               </p>
-              <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
-                <a
-                  href="#top"
-                  class="inline-flex items-center justify-center border border-sky bg-sky px-6 py-3 text-sm font-semibold text-ink transition-transform duration-200 hover:-translate-y-0.5"
-                >
-                  Remonter en haut
-                </a>
-                <a
-                  href="#positioning"
-                  class="inline-flex items-center justify-center border border-white/12 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/[0.08]"
-                >
-                  Revoir le positionnement
-                </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" class="section-shell px-4 py-24 md:px-6">
+          <div class="mx-auto max-w-7xl">
+            <div class="max-w-3xl reveal-block">
+              <p class="section-kicker">Feature grid</p>
+              <h2 class="section-title mt-4">Minimal interface. Strong operating logic.</h2>
+            </div>
+            <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              <article class="grid-card">
+                <p class="grid-card__eyebrow">Validate before acting</p>
+                <h3>Turn a possible setup into a verified one.</h3>
+                <p>Context checks, scenario filters, and rule alignment before any execution decision is considered.</p>
+              </article>
+              <article class="grid-card">
+                <p class="grid-card__eyebrow">Read before executing</p>
+                <h3>See structure before noise takes over.</h3>
+                <p>Use guided review layers to separate signal from distraction across timeframe, level, and session flow.</p>
+              </article>
+              <article class="grid-card">
+                <p class="grid-card__eyebrow">Stay consistent</p>
+                <h3>Build repeatable behavior under pressure.</h3>
+                <p>Track execution quality, skipped trades, and rule adherence as part of one continuous discipline loop.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="interface" class="section-shell border-y border-white/8 bg-[#070d14] px-4 py-24 md:px-6">
+          <div class="mx-auto max-w-7xl">
+            <div class="grid gap-12 lg:grid-cols-[0.84fr_1.16fr] lg:items-start">
+              <div class="reveal-block">
+                <p class="section-kicker">Interface preview</p>
+                <h2 class="section-title mt-4">A dashboard that behaves like an operating console, not a casino screen.</h2>
+                <p class="mt-6 max-w-xl text-lg leading-8 text-white/66">
+                  Soft glass panels, thin separators, and strong information hierarchy keep attention on decisions,
+                  not decoration. Every block exists to reduce noise and reinforce control.
+                </p>
+              </div>
+
+              <div class="interface-grid">
+                <article class="interface-card interface-card--wide">
+                  <div class="interface-card__head">
+                    <p class="panel-kicker">Scenario analysis</p>
+                    <span>High timeframe aligned</span>
+                  </div>
+                  <div class="interface-card__bars">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                </article>
+                <article class="interface-card">
+                  <div class="interface-card__head">
+                    <p class="panel-kicker">Performance log</p>
+                    <span>Weekly</span>
+                  </div>
+                  <div class="interface-card__rows">
+                    <div><span>Plan respected</span><strong>92%</strong></div>
+                    <div><span>Overtrade rate</span><strong>04%</strong></div>
+                    <div><span>Patience score</span><strong>88</strong></div>
+                  </div>
+                </article>
+                <article class="interface-card">
+                  <div class="interface-card__head">
+                    <p class="panel-kicker">Discipline metrics</p>
+                    <span>Rolling 30d</span>
+                  </div>
+                  <div class="interface-card__gauge">
+                    <div class="interface-card__gauge-ring"></div>
+                    <strong>84</strong>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="process" class="section-shell px-4 py-24 md:px-6">
+          <div class="mx-auto max-w-7xl">
+            <div class="max-w-3xl reveal-block">
+              <p class="section-kicker">Process</p>
+              <h2 class="section-title mt-4">Observe. Filter. Execute.</h2>
+            </div>
+            <div class="process-flow mt-14">
+              <article class="process-step">
+                <span class="process-step__index">01</span>
+                <h3>Observe</h3>
+                <p>Review the session context, key levels, and broader market conditions before touching execution.</p>
+              </article>
+              <article class="process-step">
+                <span class="process-step__index">02</span>
+                <h3>Filter</h3>
+                <p>Remove trades that do not respect the plan, the scenario criteria, or the risk framework.</p>
+              </article>
+              <article class="process-step">
+                <span class="process-step__index">03</span>
+                <h3>Execute</h3>
+                <p>Act only when the setup is validated, the risk is acceptable, and the decision remains coherent.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-shell border-y border-white/8 bg-[#060b12] px-4 py-24 md:px-6">
+          <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1fr]">
+            <div class="reveal-block">
+              <p class="section-kicker">Behavioral insight</p>
+              <h2 class="editorial-title mt-4">The message usually comes after the trade. The discipline has to come before it.</h2>
+            </div>
+            <div class="reveal-block">
+              <p class="max-w-2xl text-lg leading-9 text-white/66">
+                Most traders do not need more intensity. They need more space between stimulus and action. Ionos Pora
+                is designed for that gap. It supports the quiet part of good trading: patience, review, and a cleaner
+                relationship with uncertainty.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" class="section-shell px-4 py-24 md:px-6">
+          <div class="mx-auto max-w-5xl">
+            <div class="text-center reveal-block">
+              <p class="section-kicker">FAQ</p>
+              <h2 class="section-title mt-4 mx-auto">Questions serious traders ask first.</h2>
+            </div>
+            <div class="mt-12 space-y-4">
+              <details class="faq-card">
+                <summary>Does the assistant place trades for me?</summary>
+                <p>No. Ionos Pora supports analysis, discipline, and execution quality. Final decision-making stays with the trader.</p>
+              </details>
+              <details class="faq-card">
+                <summary>Is this built for beginners or experienced traders?</summary>
+                <p>Both. Beginners benefit from structure. Experienced traders benefit from cleaner review, stricter discipline, and more consistent behavior.</p>
+              </details>
+              <details class="faq-card">
+                <summary>Why focus so much on discipline metrics?</summary>
+                <p>Because long-term trading performance is shaped by repeated behavior. Measuring discipline over time creates a more useful feedback loop than isolated outcomes.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section id="final-cta" class="section-shell px-4 pb-24 pt-8 md:px-6 md:pb-28">
+          <div class="mx-auto max-w-6xl">
+            <div class="closing-panel">
+              <p class="section-kicker">Final CTA</p>
+              <h2 class="section-title mt-4 max-w-4xl">A calmer interface for sharper decisions.</h2>
+              <p class="mt-6 max-w-3xl text-lg leading-8 text-white/68">
+                Ionos Pora is built for traders who want more structure, more control, and a more serious process around execution.
+              </p>
+              <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+                <a href="#top" class="cta-primary">Start now</a>
+                <a href="#process" class="cta-secondary">See how it works</a>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer class="border-t border-white/10 bg-ink px-4 py-6 md:px-6">
+      <footer class="border-t border-white/8 bg-ink px-4 py-6 md:px-6">
         <div class="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-white/42 md:flex-row md:items-center md:justify-between">
-          <p>© <span id="year"></span> Ionos Pora. Assistant de trading pour analyse, discipline et progression.</p>
+          <p>© <span id="year"></span> Ionos Pora. AI trading assistant for clarity, discipline, and structured execution.</p>
           <div class="flex flex-wrap gap-4">
-            <a class="nav-link" href="#top">Accueil</a>
-            <a class="nav-link" href="#advantages">Avantages</a>
+            <a class="nav-link" href="#value">Value</a>
+            <a class="nav-link" href="#interface">Interface</a>
             <a class="nav-link" href="#faq">FAQ</a>
           </div>
         </div>
       </footer>
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="/app.js"></script>
   </body>

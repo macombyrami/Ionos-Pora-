@@ -3,23 +3,11 @@ document.getElementById("year").textContent = new Date().getFullYear();
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const root = document.documentElement;
 const hero = document.querySelector(".hero-shell");
-const commandBoard = document.getElementById("command-board");
+const dashboardShell = document.getElementById("dashboard-shell");
 const parallaxLayers = document.querySelectorAll("[data-depth]");
-const terminalRows = document.querySelectorAll(".terminal-row");
-const signalBars = document.querySelectorAll(".signal-bars__bar");
-const floatingCards = document.querySelectorAll(".signal-card");
 const counterElements = document.querySelectorAll("[data-counter]");
+const flowBars = document.querySelectorAll(".interface-card__bars span");
 const wavesCanvas = document.querySelector(".line-waves-canvas");
-
-if (window.AOS) {
-  window.AOS.init({
-    duration: 850,
-    easing: "ease-out-cubic",
-    once: true,
-    offset: 70,
-    disable: prefersReducedMotion,
-  });
-}
 
 const updateScrollProgress = () => {
   if (!hero) {
@@ -37,135 +25,127 @@ window.addEventListener("resize", updateScrollProgress);
 
 if (!prefersReducedMotion && window.gsap) {
   const { gsap } = window;
-  const mm = gsap.matchMedia();
 
   gsap.defaults({
     duration: 0.9,
     ease: "power3.out",
   });
 
-  const clampX = gsap.utils.clamp(-16, 16);
-  const clampY = gsap.utils.clamp(-14, 14);
-  const mapX = gsap.utils.pipe(gsap.utils.normalize(0, window.innerWidth || 1), gsap.utils.mapRange(0, 1, -1, 1));
-  const mapY = gsap.utils.pipe(gsap.utils.normalize(0, window.innerHeight || 1), gsap.utils.mapRange(0, 1, -1, 1));
+  const revealTargets = gsap.utils.toArray(".reveal-block, .feature-card, .grid-card, .interface-card, .process-step, .faq-card");
+  const clampX = gsap.utils.clamp(-14, 14);
+  const clampY = gsap.utils.clamp(-12, 12);
 
-  mm.add("(min-width: 768px)", () => {
-    const introTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+  gsap.set(revealTargets, { autoAlpha: 0, y: 28 });
 
-    introTimeline
-      .from(".site-header", { y: -28, autoAlpha: 0, duration: 0.7 })
-      .from(".hero-band__item", { y: 24, autoAlpha: 0, stagger: 0.06, duration: 0.55 }, "-=0.3")
-      .from(".hero-copy > *", { y: 32, autoAlpha: 0, stagger: 0.1, duration: 0.8 }, "-=0.25")
-      .from(".command-board", { scale: 0.94, y: 46, autoAlpha: 0, duration: 1 }, "-=0.8")
-      .from(".proof-chip", { y: 28, autoAlpha: 0, stagger: 0.08, duration: 0.7 }, "-=0.65");
+  const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+  intro
+    .from(".site-header", { autoAlpha: 0, y: -18, duration: 0.65 })
+    .from(".hero-status__item", { autoAlpha: 0, y: 18, stagger: 0.06, duration: 0.55 }, "-=0.25")
+    .from(".hero-copy > *", { autoAlpha: 0, y: 26, stagger: 0.08, duration: 0.7 }, "-=0.2")
+    .from(".dashboard-shell", { autoAlpha: 0, y: 40, scale: 0.96, duration: 1 }, "-=0.65");
 
-    const pulseTimeline = gsap.timeline({ repeat: -1, yoyo: true, defaults: { ease: "sine.inOut" } });
-    pulseTimeline
-      .to(".ambient-a", { x: 24, y: -18, duration: 6 }, 0)
-      .to(".ambient-b", { x: -18, y: 24, duration: 7 }, 0)
-      .to(".ambient-c", { x: 20, y: -10, duration: 6.5 }, 0)
-      .to(".ambient-d", { x: -14, y: 18, duration: 7.5 }, 0)
-      .to(".orbital-stage__halo", { scale: 1.06, autoAlpha: 0.92, duration: 4 }, 0)
-      .to(".risk-pill", { boxShadow: "0 0 24px rgba(65, 214, 180, 0.22)", duration: 2.2 }, 0.3);
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
 
-    gsap.to(".orbital-ring-a", { rotation: 360, duration: 18, ease: "none", repeat: -1 });
-    gsap.to(".orbital-ring-b", { rotation: -360, duration: 12, ease: "none", repeat: -1 });
-
-    gsap.utils.toArray(".value-chip, .premium-card, .advantage-card, .method-step, .proof-card, .faq-card").forEach((card, index) => {
-      gsap.to(card, {
-        y: gsap.utils.random(-6, 6, 1),
-        duration: gsap.utils.random(3.8, 5.8, 0.1),
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        delay: index * 0.08,
-      });
-    });
-
-    gsap.utils.toArray(signalBars).forEach((bar, index) => {
-      const scaleY = gsap.utils.random(0.65, 1.2, 0.01, true);
-      const alpha = gsap.utils.random(0.58, 1, 0.01, true);
-      gsap.timeline({ repeat: -1, yoyo: true, delay: index * 0.08 })
-        .to(bar, { scaleY: scaleY(), autoAlpha: alpha(), duration: gsap.utils.random(0.7, 1.8, 0.1) })
-        .to(bar, { scaleY: scaleY(), autoAlpha: alpha(), duration: gsap.utils.random(0.8, 1.9, 0.1) });
-    });
-
-    gsap.utils.toArray(floatingCards).forEach((card, index) => {
-      gsap.to(card, {
-        y: gsap.utils.random(-12, 12, 1),
-        x: gsap.utils.random(-10, 10, 1),
-        rotation: gsap.utils.random(-3, 3, 0.1),
-        duration: 4 + index,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-    });
-
-    if (hero && commandBoard) {
-      hero.addEventListener("pointermove", (event) => {
-        const xFactor = clampX(mapX(event.clientX) * 12);
-        const yFactor = clampY(mapY(event.clientY) * 10);
-
-        gsap.to(root, {
-          "--hero-tilt-x": `${-yFactor}deg`,
-          "--hero-tilt-y": `${xFactor}deg`,
-          "--scene-shift-x": `${xFactor * 1.6}px`,
-          "--scene-shift-y": `${yFactor * 1.25}px`,
-          duration: 0.45,
+        gsap.to(entry.target, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
           overwrite: "auto",
         });
 
-        parallaxLayers.forEach((layer) => {
-          const depth = Number(layer.getAttribute("data-depth") || 0);
-          gsap.to(layer, {
-            "--parallax-x": `${xFactor * (depth / 18)}px`,
-            "--parallax-y": `${yFactor * (depth / 16)}px`,
-            duration: 0.55,
-            overwrite: "auto",
-          });
-        });
+        revealObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  revealTargets.forEach((item) => revealObserver.observe(item));
+
+  gsap.timeline({ repeat: -1, yoyo: true, defaults: { ease: "sine.inOut" } })
+    .to(".ambient-a", { x: 22, y: -18, duration: 7 }, 0)
+    .to(".ambient-b", { x: -16, y: 22, duration: 8 }, 0)
+    .to(".ambient-c", { x: 18, y: -12, duration: 7.5 }, 0)
+    .to(".panel-badge", { boxShadow: "0 0 28px rgba(69, 211, 175, 0.14)", duration: 2.6 }, 0.2);
+
+  gsap.to(".discipline-meter__fill", {
+    width: "84%",
+    duration: 1.8,
+    ease: "power3.out",
+    delay: 0.6,
+  });
+
+  gsap.to(".chart-grid__path-main", {
+    strokeDasharray: 900,
+    strokeDashoffset: 900,
+    duration: 0,
+  });
+  gsap.to(".chart-grid__path-main", {
+    strokeDashoffset: 0,
+    duration: 1.8,
+    ease: "power2.inOut",
+    delay: 0.7,
+  });
+
+  gsap.utils.toArray(flowBars).forEach((bar, index) => {
+    const scaleY = gsap.utils.random(0.72, 1.16, 0.01, true);
+    gsap.timeline({ repeat: -1, yoyo: true, delay: index * 0.08 })
+      .to(bar, { scaleY: scaleY(), duration: gsap.utils.random(0.8, 1.5, 0.1) })
+      .to(bar, { scaleY: scaleY(), duration: gsap.utils.random(0.9, 1.6, 0.1) });
+  });
+
+  if (hero && dashboardShell) {
+    hero.addEventListener("pointermove", (event) => {
+      const rect = hero.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+      const xFactor = clampX(x * 10);
+      const yFactor = clampY(y * 10);
+
+      gsap.to(root, {
+        "--hero-tilt-x": `${-yFactor}deg`,
+        "--hero-tilt-y": `${xFactor}deg`,
+        "--scene-shift-x": `${xFactor * 1.4}px`,
+        "--scene-shift-y": `${yFactor * 1.15}px`,
+        duration: 0.45,
+        overwrite: "auto",
       });
 
-      hero.addEventListener("pointerleave", () => {
-        gsap.to(root, {
-          "--hero-tilt-x": "0deg",
-          "--hero-tilt-y": "0deg",
-          "--scene-shift-x": "0px",
-          "--scene-shift-y": "0px",
+      parallaxLayers.forEach((layer) => {
+        const depth = Number(layer.getAttribute("data-depth") || 0);
+        gsap.to(layer, {
+          "--parallax-x": `${xFactor * (depth / 18)}px`,
+          "--parallax-y": `${yFactor * (depth / 16)}px`,
+          duration: 0.55,
+          overwrite: "auto",
+        });
+      });
+    });
+
+    hero.addEventListener("pointerleave", () => {
+      gsap.to(root, {
+        "--hero-tilt-x": "0deg",
+        "--hero-tilt-y": "0deg",
+        "--scene-shift-x": "0px",
+        "--scene-shift-y": "0px",
+        duration: 0.7,
+        ease: "power3.out",
+      });
+
+      parallaxLayers.forEach((layer) => {
+        gsap.to(layer, {
+          "--parallax-x": "0px",
+          "--parallax-y": "0px",
           duration: 0.7,
           ease: "power3.out",
         });
-
-        parallaxLayers.forEach((layer) => {
-          gsap.to(layer, {
-            "--parallax-x": "0px",
-            "--parallax-y": "0px",
-            duration: 0.7,
-            ease: "power3.out",
-          });
-        });
       });
-    }
-  });
-
-  if (terminalRows.length > 0) {
-    const wrapIndex = gsap.utils.wrap(0, terminalRows.length);
-    let activeIndex = 0;
-
-    window.setInterval(() => {
-      terminalRows.forEach((row, index) => {
-        gsap.to(row, {
-          borderColor: index === activeIndex ? "rgba(103, 194, 255, 0.28)" : "rgba(255, 255, 255, 0.08)",
-          backgroundColor: index === activeIndex ? "rgba(255, 255, 255, 0.055)" : "rgba(255, 255, 255, 0.03)",
-          y: index === activeIndex ? -2 : 0,
-          duration: 0.45,
-          overwrite: "auto",
-        });
-      });
-
-      activeIndex = wrapIndex(activeIndex + 1);
-    }, 1500);
+    });
   }
 
   const countObserver = new IntersectionObserver(
@@ -176,21 +156,21 @@ if (!prefersReducedMotion && window.gsap) {
         }
 
         const targetValue = Number(entry.target.getAttribute("data-counter") || 0);
-        const counterState = { value: 0 };
+        const state = { value: 0 };
 
-        gsap.to(counterState, {
+        gsap.to(state, {
           value: targetValue,
           duration: 1.4,
           ease: "power2.out",
           onUpdate: () => {
-            entry.target.textContent = `${Math.round(counterState.value)}`;
+            entry.target.textContent = `${Math.round(state.value)}`;
           },
         });
 
         countObserver.unobserve(entry.target);
       });
     },
-    { threshold: 0.45 }
+    { threshold: 0.4 }
   );
 
   counterElements.forEach((counter) => countObserver.observe(counter));
@@ -219,25 +199,25 @@ if (!prefersReducedMotion && hero && wavesCanvas instanceof HTMLCanvasElement) {
       context.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
     };
 
-    const lines = Array.from({ length: 14 }, (_, index) => ({
-      offset: index * 0.2,
-      amplitude: 12 + index * 2.1,
-      alpha: index < 4 ? 0.28 : 0.14,
+    const lines = Array.from({ length: 12 }, (_, index) => ({
+      offset: index * 0.22,
+      amplitude: 8 + index * 1.6,
+      alpha: index < 4 ? 0.22 : 0.1,
     }));
 
     const drawGrid = () => {
       context.save();
-      context.strokeStyle = "rgba(103, 194, 255, 0.07)";
+      context.strokeStyle = "rgba(116, 200, 255, 0.06)";
       context.lineWidth = 1;
 
-      for (let x = 0; x <= state.width; x += 52) {
+      for (let x = 0; x <= state.width; x += 56) {
         context.beginPath();
         context.moveTo(x, 0);
         context.lineTo(x, state.height);
         context.stroke();
       }
 
-      for (let y = 0; y <= state.height; y += 52) {
+      for (let y = 0; y <= state.height; y += 56) {
         context.beginPath();
         context.moveTo(0, y);
         context.lineTo(state.width, y);
@@ -247,30 +227,28 @@ if (!prefersReducedMotion && hero && wavesCanvas instanceof HTMLCanvasElement) {
       context.restore();
     };
 
-    const drawWaves = () => {
+    const drawLines = () => {
       const step = 24;
-      const pointerBiasX = (state.pointerX - 0.5) * 48;
-      const pointerBiasY = (state.pointerY - 0.5) * 26;
+      const pointerX = (state.pointerX - 0.5) * 44;
+      const pointerY = (state.pointerY - 0.5) * 22;
 
       lines.forEach((line, index) => {
-        const baseY = state.height * (0.14 + index * 0.053);
+        const baseY = state.height * (0.18 + index * 0.055);
         context.beginPath();
-        context.lineWidth = index < 3 ? 1.4 : 1;
+        context.lineWidth = index < 2 ? 1.35 : 1;
         context.strokeStyle =
-          index % 4 === 0
-            ? `rgba(103, 194, 255, ${line.alpha})`
-            : index % 3 === 0
-              ? `rgba(255, 158, 87, ${line.alpha * 0.78})`
-              : `rgba(255, 255, 255, ${line.alpha * 0.55})`;
+          index % 3 === 0
+            ? `rgba(116, 200, 255, ${line.alpha})`
+            : `rgba(255, 255, 255, ${line.alpha * 0.62})`;
 
         for (let x = -step; x <= state.width + step; x += step) {
           const ratio = x / Math.max(state.width, 1);
           const y =
             baseY +
-            Math.sin(x * 0.008 + state.tick * 1.8 + line.offset) * line.amplitude +
-            Math.cos(x * 0.004 - state.tick * 1.28 + line.offset) * (line.amplitude * 0.5) +
-            pointerBiasX * (ratio - 0.5) * 0.12 +
-            pointerBiasY;
+            Math.sin(x * 0.008 + state.tick * 1.5 + line.offset) * line.amplitude +
+            Math.cos(x * 0.004 - state.tick * 1.1 + line.offset) * (line.amplitude * 0.45) +
+            pointerX * (ratio - 0.5) * 0.08 +
+            pointerY;
 
           if (x <= 0) {
             context.moveTo(x, y);
@@ -284,10 +262,10 @@ if (!prefersReducedMotion && hero && wavesCanvas instanceof HTMLCanvasElement) {
     };
 
     const draw = () => {
-      state.tick += 0.014;
+      state.tick += 0.012;
       context.clearRect(0, 0, state.width, state.height);
       drawGrid();
-      drawWaves();
+      drawLines();
       window.requestAnimationFrame(draw);
     };
 
